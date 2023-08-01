@@ -13,4 +13,5 @@ public class Usuario
     public DateTimeOffset DataCadastro { get; set; }
     public Contato? Contato { get; set; }     
     public ICollection<EnderecoEntrega>? EnderecosEntrega { get; set; }  
+    public ICollection<Departamento>? Departamentos { get; set; }
 }
