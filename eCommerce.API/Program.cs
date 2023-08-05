@@ -1,6 +1,10 @@
+global using eCommerce.Models;
+using eCommerce.API.Database;
 using eCommerce.API.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -9,6 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+builder.Services.AddDbContext<eCommerceContext>(options => options.UseSqlServer(configuration.GetConnectionString("eCommerce")));
 
 var app = builder.Build();
 
